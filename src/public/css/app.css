@@ -1,0 +1,31 @@
+h1 {
+  color: red; }
+
+.quiz-result {
+  color: red;
+  height: 20vh;
+  background-color: antiquewhite; }
+
+.question-content {
+  height: 70vh;
+  color: brown; }
+
+.main-content {
+  background-color: aqua; }
+
+body {
+  background-color: chartreuse; }
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 5vh; }
+
+form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  padding: 5vw;
+  margin-top: 10vh;
+  background-color: aqua;
+  border: 10px solid blue; }

@@ -1,0 +1,16 @@
+<h1>Your Score {{record.score}}</h1>
+{{#each record.question}}
+<div class="card">
+    <h3 class="card-header">Question {{this.name}}</h3>
+    <div class="card-body">
+        <h5 class="card-title">{{this.content}} </h5>
+        <p class="card-text">
+        <p>Selected Option: {{this.selectedOption}}</p>
+        <p>Score: {{this.score}}</p>
+
+    </div>
+</div>
+{{/each}}
+{{!-- mypage/pdf/id --}}
+<a href="pdf/{{record._id}}" class="btn btn-primary">Download PDF</a>
+{{!-- <a href="exportPdf" class="btn btn-primary">Okie</a> --}}
