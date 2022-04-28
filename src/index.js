@@ -13,20 +13,25 @@ const route = require('./routes')
 const db = require('./app/config/db')
 //connect to DB
 db.connect()
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 //HTTP logger
 app.use(morgan('combined'))
 //Template engine
 app.engine('hbs', handlebars.engine({
-  extname:'.hbs'
+  extname: '.hbs',
+  helpers: {
+    sum: (a, b) => a + b
+  }
 }))
 app.set('view engine', 'hbs')
-app.set('views',path.join(__dirname,'resources','views'))
+app.set('views', path.join(__dirname, 'resources', 'views'))
 
 //middleware
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(cookieParser('jwtSecret'))
 //Routes init
@@ -38,4 +43,3 @@ app.use(errorHandlerMiddleware)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-

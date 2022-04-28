@@ -1,0 +1,22 @@
+<h1>All Users Information</h1>
+<table class="table table-success">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td><a href="/user/{{this._id}}">{{this.name}}</a></td>
+            <td>{{this.email}}</td>
+            <td>{{this.role}}</td>
+        </tr>
+        {{/each}}
+
+    </tbody>
+</table>

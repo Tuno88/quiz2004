@@ -4,10 +4,11 @@ const registerRouter = require('./register')
 const logoutRouter = require('./logout')
 const usersRouter = require('./users')
 const quizRouter = require('./quiz')
+const pdfRouter = require('./pdf')
 const cookieParser = require('cookie-parser')
 
-function route(app){
-  
+function route(app) {
+
     // app.get('/', (req, res) => {
     // res.render('home')
     // })
@@ -16,14 +17,14 @@ function route(app){
     //     console.log(req.signedCookies)
     //     res.send('abc')
     // })
-    app.use('/login',loginRouter)
-    app.use('/mypage', newsRouter)
-    app.use('/register',registerRouter)
-    app.use('/logout',logoutRouter)
-    app.use('/user',usersRouter)
-    app.use('/quiz',quizRouter)
-    app.use('/export',newsRouter)
-    app.use('/',loginRouter)
+    app.use('/login', loginRouter)
+    app.use('/mypage', newsRouter) //mypage/exportPdf/:id
+    app.use('/register', registerRouter)
+    app.use('/logout', logoutRouter)
+    app.use('/user', usersRouter)
+    app.use('/quiz', quizRouter)
+    // app.use('/export', pdfRouter)
+    app.use('/', loginRouter)
 }
 
 module.exports = route

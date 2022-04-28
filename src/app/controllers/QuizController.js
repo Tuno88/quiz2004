@@ -1,27 +1,32 @@
-const { redirect } = require('express/lib/response')
+const {
+    redirect
+} = require('express/lib/response')
 const Question = require('../models/Question')
 
-class QuizController{
+class QuizController {
     //[GET] quiz/question-form
-    question(req,res,next){
-        if(!req.user){
+    question(req, res, next) {
+        if (!req.user) {
             return res.redirect('/')
         }
         res.render('question_form')
     }
     //[POST] quiz/question-form
-    createQuestion(req,res,next){
+    createQuestion(req, res, next) {
+        if (!req.user) {
+            return res.redirect('/')
+        }
         const question = new Question(req.body)
         question.save()
-        .then(()=>res.redirect('/question-form'))
-        .catch(next)
+            .then(() => res.render('question_form'))
+            .catch(next)
     }
     //[GET] quiz/getQuestion
-    getQuestion(req,res,next){
+    getQuestion(req, res, next) {
         res.render('news')
     }
     //[GET] quiz/store
-    store(req,res){
+    store(req, res) {
         res.send('news detail')
     }
 }
